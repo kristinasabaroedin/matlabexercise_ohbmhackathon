@@ -1,0 +1,21 @@
+function f = plot_distribution(Genes, probeInformation, parcelExpression)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+
+
+numGenes = length(Genes);
+
+for i = 1:numGenes
+    idx_Gene = find(strcmp(probeInformation.GeneSymbol,Genes{i}))
+    
+    AxHandle(i) = subplot(1,numGenes,i); 
+	histogram(parcelExpression(:,idx_Gene))
+
+    axis square
+    ylabel('Count')
+    xlabel('Gene expression')
+    title(sprintf('%s\n', Genes{i}))
+    box off
+    set(gca,'fontsize', 14);
+end
+

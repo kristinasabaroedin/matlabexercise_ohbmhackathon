@@ -1,0 +1,23 @@
+parentdir = '/Users/kristinasabaroedin/Documents/Projects/ohbm_hackathon2020/matlabexercise_ohbmhackathon/';
+scriptsdir = [parentdir, 'code/'];
+datadir = [parentdir, 'data/'];
+
+addpath(genpath(scriptsdir))
+
+load([datadir,'geneExpression.mat'])
+
+Genes = {'ABCA2','CAPN2','CTDSPL'};
+numGenes = length(Genes);
+
+idx_ABCA2 = find(strcmp(probeInformation.GeneSymbol,'ABCA2'))
+exp_ABCA2 = parcelExpression(:,idx_ABCA2);
+idx_CAPN2 = find(strcmp(probeInformation.GeneSymbol,'CAPN2'))
+exp_CAPN2 = parcelExpression(:,idx_CAPN2);
+idx_CTDSPL = find(strcmp(probeInformation.GeneSymbol,'CTDSPL'))
+exp_CTDSPL = parcelExpression(:,idx_CTDSPL);
+
+% for i = 1:numGenes    
+%     exp(:,i) = parcelExpression(:,['idx_',Genes{i}]); 
+% end
+
+[distributions] = plot_distribution()
